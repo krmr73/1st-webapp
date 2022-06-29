@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>グラフを使った可視化アプリの例</title>
+        <meta charset="UTF-8">
+        <link href="style.css" rel="stylesheet">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
+        <script type="text/javascript">
+
+            // Prefix の設定
+            sgvizler.prefix('rdf', 'http://www.w3.org/1999/02/22-rdf-syntax-ns#');
+            sgvizler.prefix('owl', 'http://www.w3.org/2002/07/owl#');
+            sgvizler.prefix('cc', 'http://creativecommons.org/ns#');
+            sgvizler.prefix('fo', 'http://fuseki.open.coins.tsukuba.ac.jp/');
+            sgvizler.prefix('foaf', 'http://xmlns.com/foaf/0.1/');
+            sgvizler.prefix('ns', 'http://creativecommons.org/ns#');
+            sgvizler.prefix('res', 'http://linkdata.org/resource/rdf1s9412i#');
+            sgvizler.prefix('prop', 'http://linkdata.org/property/rdf1s9412i#');
+            sgvizler.prefix('geo', 'http://www.w3.org/2003/01/geo/wgs84_pos#');
+            // HTMLファイルをロードしたら画面描画
+            $(document).ready(function () { sgvizler.containerDrawAll(); });
+        </script>
+    </head>
+
+    <body>
+        <h1>一の矢の猫　人懐っこさランキング</h1>
+        <div id="sgvzl_example_table" 
+            data-sgvizler-endpoint="https://fuseki.open.coins.tsukuba.ac.jp/lod/"
+            data-sgvizler-query="select ?name ?friend where {
+                            ?s prop:firiendliness ?friend;
+                            foaf:firstName ?name.
+                            }order by desc(?friend)
+                            limit 5000" 
+            data-sgvizler-chart="google.visualization.ColumnChart" data-sgvizler-loglevel="2"
+            style="width:1000px; height:500px;"></div>
+
+    </body>
+
+</html>
