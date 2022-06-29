@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ねこマップ</title>
+        <meta name="viewport" content="initial-scale=1.0">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        
+        <script type="text/javascript">
+            // GETリクエストを送信
+            $.get(
+                "https://fuseki.open.coins.tsukuba.ac.jp/lod/",	// エンドポイント
+                {
+                    query: "prefix  geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> prefix jrrk: <http://purl.org/jrrk#> prefix schema: <http://schema.org/> prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> prefix odp: <http://odp.jig.jp/odp/1.0#> prefix ic:              <http://imi.go.jp/ns/core/rdf#> prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> prefix prop:  <http://linkdata.org/property/rdf1s9412i#> prefix foaf: <http://xmlns.com/foaf/0.1/> select ?lat ?long ?name ?pat ?gen ?fri where { ?s prop:firiendliness ?fri; foaf:firstName ?name; geo:lat ?lat; geo:long ?long; prop:pattern ?pat; foaf:gender ?gen. }"
+                },
+                // クエリ(説明文と画像を最大20件まで要求
+                success,	// 返ってきたデータを処理する関数
+                "json"	// 返ってきてほしいデータの形式
+            );
+
+            var datas;
+            // getリクエストで得たdataを処理する
+            function success(data) {
+                // 文字列に変換
+                datas = data["results"]["bindings"];
+                var html = JSON.stringify(data);
+                // そのまま表示
+                $("#disp").html(html);
+                console.log(data);
+                var markers = [];
+                var infoWindow = [];
+                var markerEvent = (i) => {
+                    markers[i].addListener('click', () => {
+                        for (var j in markers) {
+                            infoWindow[j].close(map, markers[j]);
+                        }
+                        infoWindow[i].open(map, markers[i]);
+                    });
+                }
+
+                var setlat = new Set();
+                var setlng = new Set();
+
+                for(var i = 0; i < datas.length; i++){
+                    var lat = parseFloat(datas[i]["lat"]["value"]);
+                    var lng = parseFloat(datas[i]["long"]["value"]);
+                    
+                    if(setlat.has(lat) && setlng.has(lng)){
+                        lat = lat + 0.00002;
+                        lng = lng + 0.00002;
+                        console.log(1);
+                    }else{
+                        setlat.add(lat);
+                        setlng.add(lng);
+                        console.log(2);
+                    }
+
+                    var icon;
+                    if (datas[i]["gen"]["value"] == "female") {
+                        icon = "https://maps.google.com/mapfiles/ms/icons/red-dot.png";
+                    } else {
+                        icon = "https://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+                    }
+
+                    markers[i] = new google.maps.Marker({ // マーカーの追加
+                        position: { lat: lat, lng: lng }, // マーカーを立てる位置を指定
+                        map: map, // マーカーを立てる地図を指定
+                        icon: icon,
+                    });
+                    infoWindow[i] = new google.maps.InfoWindow({
+                        content: `<div class="custom-info">
+                        <div class="name">
+                        ${datas[i]["name"]["value"]}
+                        </div>
+                        <div class="pattern">
+                        毛色：${datas[i]["pat"]["value"]}
+                        </div>
+                        <div class="friendliness">
+                        さわりやすさ：☆${datas[i]["fri"]["value"]}
+                        </div>
+                    </div>` // 吹き出しに表示する内容
+                    });
+                    // 各マーカーにクリックイベントを追加
+                    markerEvent(i);
+                }
+            }
+
+        </script>
+        
+        <style>
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            #map {
+                height: 85%;
+                width: 100%;
+            }
+        </style>
+
+            
+    </head>
+
+    <body>
+        <h2>一の矢 ねこマップ</h2>
+        <div id="map"></div>
+        <script>
+
+        var map;
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 36.1191302, lng: 140.0977770},
+                zoom: 18
+            });
+
+        }
+
+        </script>
+        <script async="false" type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCsTVsdFryGgtFBEe_yHrslkePQgJbQAE&callback=initMap">
+        </script>
+    </body>
+
+</html>

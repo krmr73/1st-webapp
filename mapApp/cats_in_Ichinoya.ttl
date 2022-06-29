@@ -1,0 +1,79 @@
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix cc:  <http://creativecommons.org/ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+<>
+      cc:attributionName "Nanami"@ja ;
+
+      cc:license <http://creativecommons.org/publicdomain/zero/1.0/deed.ja> .
+
+<http://linkdata.org/property/rdf1s9412i#pattern>
+      rdf:type rdf:Property ;
+      rdfs:label "pattern"@ja .
+<http://linkdata.org/property/rdf1s9412i#firiendliness>
+      rdf:type rdf:Property ;
+      rdfs:label "firiendliness"@ja .
+
+<http://linkdata.org/resource/rdf1s9412i#Sabiko>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Sabiko"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "さびこ"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "female"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "キジトラ"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.118541"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.096708"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "1"^^xsd:int .
+
+<http://linkdata.org/resource/rdf1s9412i#Mi>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Mi"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "みい"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "female"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "サビ"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.118428"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.09789"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "1"^^xsd:int .
+
+<http://linkdata.org/resource/rdf1s9412i#Tama>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Tama"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "たま"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "female"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "キジトラ"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.118428"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.09789"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "5"^^xsd:int .
+
+<http://linkdata.org/resource/rdf1s9412i#Kucho>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Kucho"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "くちょ"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "male"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "茶トラ"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.118073"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.099016"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "3"^^xsd:int .
+
+<http://linkdata.org/resource/rdf1s9412i#Buchi>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Buchi"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "ぶち"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "female"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "キジ白"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.119372"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.098128"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "5"^^xsd:int .
+
+<http://linkdata.org/resource/rdf1s9412i#Maburu>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Maburu"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "まーぶる"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "female"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "灰サビ"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.119372"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.098128"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "4"^^xsd:int .
+
+<http://linkdata.org/resource/rdf1s9412i#Kasumi>
+      <http://www.w3.org/2000/01/rdf-schema#label> "Kasumi"@ja ;
+      <http://xmlns.com/foaf/0.1/firstName> "かすみ"@ja ;
+      <http://xmlns.com/foaf/0.1/gender> "female"@en ;
+      <http://linkdata.org/property/rdf1s9412i#pattern> "三毛"@ja ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#lat> "36.120164"^^xsd:float ;
+      <http://www.w3.org/2003/01/geo/wgs84_pos#long> "140.097771"^^xsd:float ;
+      <http://linkdata.org/property/rdf1s9412i#firiendliness> "5"^^xsd:int .
